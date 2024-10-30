@@ -1,4 +1,4 @@
-package com.automation1;
+package com.automation;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class RestAssuredDemoAuth {
+public class RestAssuredDemoPut {
     public static void main(String[] args) throws FileNotFoundException {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
 
@@ -24,26 +24,17 @@ public class RestAssuredDemoAuth {
         System.out.println(response.statusCode());
         System.out.println(response.asPrettyString());
 
-        String token = response.jsonPath().getString("token");
-        System.out.println("Extracted Token: " + token);
+        System.out.println("Enter token: ");
+        String token = new Scanner(System.in).next();
+        reqSpecification.header("Cookie", "token=" + token);
 
-    }
+        Scanner sc1 = new Scanner(new FileInputStream("src/test/resources/data/create_booking.json"));
+        String body1 = sc1.useDelimiter("\\Z").next();
 
-    public static String getToken() throws FileNotFoundException {
-        RestAssured.baseURI = "https://restful-booker.herokuapp.com";
+        reqSpecification.body(body1);
 
-        RequestSpecification reqSpecification = RestAssured.given();
-        reqSpecification.contentType("application/json");
-
-        Scanner sc = new Scanner(new FileInputStream("src/test/resources/data/create_token.json"));
-        String body = sc.useDelimiter("\\Z").next();
-
-
-        reqSpecification.body(body);
-        Response response = reqSpecification.post("/auth");
-        System.out.println(response.statusCode());
-        System.out.println(response.asPrettyString());
-
-        return response.jsonPath().getString("token");
+        Response response1 = reqSpecification.put("/booking/2663");
+        System.out.println(response1.statusCode());
+        System.out.println(response1.asPrettyString());
     }
 }

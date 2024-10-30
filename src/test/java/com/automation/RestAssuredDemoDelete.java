@@ -1,12 +1,10 @@
-package com.automation1;
+package com.automation;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class RestAssuredDemoDelete {
     public static void main(String[] args) throws FileNotFoundException {
