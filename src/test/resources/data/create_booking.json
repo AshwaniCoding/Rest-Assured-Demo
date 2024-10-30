@@ -1,0 +1,11 @@
+{
+  "firstname" : "Ashwani Kumar",
+  "lastname" : "Dwivedi",
+  "totalprice" : 5500,
+  "depositpaid" : true,
+  "bookingdates" : {
+    "checkin" : "2024-10-25",
+    "checkout" : "2024-10-26"
+  },
+  "additionalneeds" : "Breakfast"
+}
