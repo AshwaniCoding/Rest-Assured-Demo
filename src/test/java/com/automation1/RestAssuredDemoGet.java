@@ -1,4 +1,4 @@
-package com.automation;
+package com.automation1;
 
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
