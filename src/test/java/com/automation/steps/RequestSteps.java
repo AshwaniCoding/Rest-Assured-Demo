@@ -31,4 +31,9 @@ public class RequestSteps {
     public void userPerformsGetCall() {
         RestAssuredUtils.get();
     }
+
+    @And("set request body from pojo {string}")
+    public void setRequestBodyFromPojo(Object pojo) {
+
+    }
 }

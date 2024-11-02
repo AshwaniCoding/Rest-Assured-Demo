@@ -1,6 +1,7 @@
 package com.automation.steps;
 
 import com.automation.utils.RestAssuredUtils;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 

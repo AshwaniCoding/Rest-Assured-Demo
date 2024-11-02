@@ -30,6 +30,14 @@ public class RestAssuredUtils {
         }
     }
 
+    public static void setBody(Object pojo){
+        try {
+            requestSpecification.body(pojo);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void get(){
         requestSpecification.log().all();
         response = requestSpecification.get(endPoint);
