@@ -67,4 +67,7 @@ public class RestAssuredUtils {
         return body;
     }
 
+    public static Response getResponse() {
+        return response;
+    }
 }
