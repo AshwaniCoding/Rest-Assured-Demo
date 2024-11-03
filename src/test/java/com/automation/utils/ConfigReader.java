@@ -36,17 +36,17 @@ public class ConfigReader {
         prop.put(key, value);
     }
 
-    // This is testing method of setObject and getObject
-    public static void main(String[] args) throws Exception {
-        ConfigReader.initConfig();
-        String content = RestAssuredUtils.getDataFromJsonFile("create_booking.json");
-        ObjectMapper objectMapper = new ObjectMapper();
-        CreateBookingRequestPojo requestPojo = objectMapper.readValue(content, CreateBookingRequestPojo.class);
-        ConfigReader.setObject("requestPojo", requestPojo);
-
-        CreateBookingRequestPojo pojo = (CreateBookingRequestPojo) ConfigReader.getObject("requestPojo");
-        System.out.println(pojo.toString());
-    }
+//    // This is testing method of setObject and getObject
+//    public static void main(String[] args) throws Exception {
+//        ConfigReader.initConfig();
+//        String content = RestAssuredUtils.getDataFromJsonFile("create_booking.json");
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        CreateBookingRequestPojo requestPojo = objectMapper.readValue(content, CreateBookingRequestPojo.class);
+//        ConfigReader.setObject("requestPojo", requestPojo);
+//
+//        CreateBookingRequestPojo pojo = (CreateBookingRequestPojo) ConfigReader.getObject("requestPojo");
+//        System.out.println(pojo.toString());
+//    }
 
 
 }
