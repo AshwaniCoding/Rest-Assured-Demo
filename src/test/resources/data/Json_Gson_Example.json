@@ -1,0 +1,21 @@
+{
+  "bookStoreId": 12457,
+  "bookStoreName": "Mohan Book Store",
+  "books": [
+    {
+      "bookName": "Let Us C",
+      "price": 299,
+      "isAvailable": true
+    },
+    {
+      "bookName": "Java Programming",
+      "price": 499,
+      "isAvailable": true
+    },
+    {
+      "bookName": "Python Master",
+      "price": 299,
+      "isAvailable": true
+    }
+  ]
+}
