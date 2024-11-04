@@ -5,8 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.io.FileNotFoundException;
-
 public class ParsingJsonUsingGson {
     public static void main(String[] args) throws Exception {
         String content = RestAssuredUtils.getDataFromJsonFile("Json_Gson_Example.json");

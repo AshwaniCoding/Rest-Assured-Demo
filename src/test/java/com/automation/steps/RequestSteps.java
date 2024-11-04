@@ -27,7 +27,7 @@ public class RequestSteps {
     @And("set request body from file {string}")
     public void setRequestBodyFromFile(String filePath) throws Exception {
         String body = RestAssuredUtils.getDataFromJsonFile(filePath);
-        RestAssuredUtils.setBody(body);
+        RestAssuredUtils.setBody(filePath);
     }
 
     @When("user performs post call")
