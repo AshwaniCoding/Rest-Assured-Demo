@@ -14,7 +14,7 @@ public class ResponseSteps {
 
     @Then("verify status code is {int}")
     public void verifyStatusCodeIs(int statusCode) {
-        Assert.assertEquals(RestAssuredUtils.getStatusCode(), statusCode);
+        Assert.assertEquals(statusCode, RestAssuredUtils.getStatusCode());
     }
 
     @And("verify response body has same data as request")
@@ -34,5 +34,10 @@ public class ResponseSteps {
     public void verifyResponseSchemaIs(String fileName) {
         Response response = RestAssuredUtils.getResponse();
         response.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("data/"+fileName));
+    }
+
+    @And("store the {string} from the response")
+    public void storeTheFromTheResponse(String key) {
+        ConfigReader.setProperty(key,RestAssuredUtils.getResponseFieldValue(key));
     }
 }
