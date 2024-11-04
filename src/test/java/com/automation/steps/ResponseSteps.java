@@ -23,4 +23,9 @@ public class ResponseSteps {
         CreateBookingRequestPojo requestPojo = (CreateBookingRequestPojo) ConfigReader.getObject("request_pojo");
         Assert.assertTrue(requestPojo.equals(responsePojo.getBooking()));
     }
+
+    @And("verify response body has field {string} is {string}")
+    public void verifyResponseBodyHasFieldIs(String jsonPath, String value) {
+        Assert.assertEquals(value, RestAssuredUtils.getResponseFieldValue(jsonPath));
+    }
 }
