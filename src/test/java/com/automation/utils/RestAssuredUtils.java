@@ -74,4 +74,13 @@ public class RestAssuredUtils {
     public static String getResponseFieldValue(String jsonPath){
         return response.jsonPath().getString(jsonPath);
     }
+
+    public static boolean isFieldAvailable(String jsonPath) {
+        try{
+            String value = RestAssuredUtils.getResponseFieldValue(jsonPath);
+            return value!=null && !value.isEmpty();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

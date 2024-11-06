@@ -1,6 +1,7 @@
 package com.automation.steps;
 
 import com.automation.pojo.CreateBookingRequestPojo;
+import com.automation.pojo.CreateTokenPojo;
 import com.automation.utils.ConfigReader;
 import com.automation.utils.RestAssuredUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,6 +12,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 
 public class RequestSteps {
 
@@ -65,5 +67,23 @@ public class RequestSteps {
     @And("user performs put call")
     public void userPerformsPutCall() {
         RestAssuredUtils.put();
+    }
+
+
+    @And("set the request body from file {string} with {string} and {string}")
+    public void setTheRequestBodyFromFileWithAnd(String fileName, String username, String password) throws Exception {
+        String content = RestAssuredUtils.getDataFromJsonFile(fileName);
+        ObjectMapper objectMapper = new ObjectMapper();
+        CreateTokenPojo pojo = objectMapper.readValue(content, CreateTokenPojo.class);
+        Field field;
+
+        field = CreateTokenPojo.class.getDeclaredField("username");
+        field.setAccessible(true);
+        field.set(pojo, username);
+        field = CreateTokenPojo.class.getDeclaredField("password");
+        field.setAccessible(true);
+        field.set(pojo, password);
+
+        RestAssuredUtils.setBody(pojo);
     }
 }

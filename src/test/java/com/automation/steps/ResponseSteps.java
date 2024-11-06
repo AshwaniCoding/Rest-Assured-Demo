@@ -40,4 +40,14 @@ public class ResponseSteps {
     public void storeTheFromTheResponse(String key) {
         ConfigReader.setProperty(key,RestAssuredUtils.getResponseFieldValue(key));
     }
+
+    @And("verify response body has field {string}")
+    public void verifyResponseBodyHasField(String jsonPath) {
+        Assert.assertTrue(RestAssuredUtils.isFieldAvailable(jsonPath));
+    }
+
+    @And("verify response body has not field {string}")
+    public void verifyResponseBodyHasNotField(String field) {
+        Assert.assertFalse(RestAssuredUtils.isFieldAvailable(field));
+    }
 }
